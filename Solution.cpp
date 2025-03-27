@@ -17,9 +17,19 @@ int main()
     int sign_before =1;
     int last_sign_of_prackect=1;
     //char flag_operand=0;
-     for(int i=0; i<s.size();i++)
+   
+    
+    string arr={0};
+    int temp=0;
+    int register_of_final_result=0;
+    int operand=0;
+    int power_of_ten=0;
+    int sign_before =1;
+    int last_sign_of_prackect=1;
+  
+          for(int i=0; i<s.size();i++)
        {
-     
+          
             if(s[i]=='+')
              {
                 register_of_final_result+=sign_before*operand; 
@@ -27,7 +37,7 @@ int main()
                 operand=0;
                 power_of_ten=0;
              }
-        else   if(s[i]=='-')
+        else if(s[i]=='-')
                 {
                     
                 register_of_final_result+=sign_before*operand;
@@ -43,34 +53,32 @@ int main()
                 operand=((pow(10,power_of_ten)*operand)+(s[i]-'0'));
                 power_of_ten++;
             
-             }
-      
-        if(i==s.size()-1)
+         }
+      else if(s[i]=='(')
         {
-             register_of_final_result+=sign_before*operand;
-        }
-   
-          
-         if(s[i]=='(')
-        {
-           temp = register_of_final_result ;
+           temp += register_of_final_result ;
             register_of_final_result =0;
             operand=0;power_of_ten=0;
             last_sign_of_prackect=sign_before;
                     
         }
             
-        if(s[i]==')')
+    else if(s[i]==')')
          {
              register_of_final_result+=sign_before*operand;
             register_of_final_result+=last_sign_of_prackect* temp ;
             temp=0;     
             operand=0;power_of_ten=0;
             last_sign_of_prackect=1;      
-                    
+      
          }        
-        
-         }
+       if(i==s.size()-1)
+           {
+             register_of_final_result+=sign_before*operand;
+            }
+  }
+return register_of_final_result;;
+
 
 
 cout<<register_of_final_result;;
