@@ -7,9 +7,10 @@ using namespace std;
 int main()
 {
     
-    string s="(3+3)+1-11+2";
-  class Solution {
-public:
+ 
+///33 / 47 testcases
+      class Solution {
+      public:
     int calculate(string s) {
  
     
@@ -83,6 +84,7 @@ cout<<register_of_final_result;;
     return 0;
 }
 /////////////////////////////////
+///all test cases 
 class Solution1 {
 public:
     int calculate(string s) {
