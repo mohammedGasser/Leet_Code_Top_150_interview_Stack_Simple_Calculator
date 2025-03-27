@@ -1,5 +1,13 @@
 /////////////////////////////////
- string s="1-20+2";
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+    
+    string s="(3+3)+1-11+2";
     string arr={0};
     int temp=0;
    // int arr_i=0;
@@ -7,6 +15,7 @@
     int operand=0;
     int power_of_ten=0;
     int sign_before =1;
+    int last_sign_of_prackect=1;
     //char flag_operand=0;
      for(int i=0; i<s.size();i++)
        {
@@ -18,7 +27,7 @@
                 operand=0;
                 power_of_ten=0;
              }
-           if(s[i]=='-')
+        else   if(s[i]=='-')
                 {
                     
                 register_of_final_result+=sign_before*operand;
@@ -26,7 +35,7 @@
                   operand=0;
                 power_of_ten=0;  
             }         
-       if (isdigit(s[i]))
+      else if (isdigit(s[i]))
            {
                 if(power_of_ten>1){
                     power_of_ten-=1; 
@@ -40,6 +49,34 @@
         {
              register_of_final_result+=sign_before*operand;
         }
+   
+          
+         if(s[i]=='(')
+        {
+           temp = register_of_final_result ;
+            register_of_final_result =0;
+            operand=0;power_of_ten=0;
+            last_sign_of_prackect=sign_before;
+                    
+        }
+            
+        if(s[i]==')')
+         {
+             register_of_final_result+=sign_before*operand;
+            register_of_final_result+=last_sign_of_prackect* temp ;
+            temp=0;     
+            operand=0;power_of_ten=0;
+            last_sign_of_prackect=1;      
+                    
+         }        
+        
+         }
+
+
+cout<<register_of_final_result;;
+
+
+    return 0;
 }
 /////////////////////////////////
 class Solution1 {
