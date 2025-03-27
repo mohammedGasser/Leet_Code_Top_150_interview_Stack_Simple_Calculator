@@ -8,16 +8,10 @@ int main()
 {
     
     string s="(3+3)+1-11+2";
-    string arr={0};
-    int temp=0;
-   // int arr_i=0;
-    int register_of_final_result=0;
-    int operand=0;
-    int power_of_ten=0;
-    int sign_before =1;
-    int last_sign_of_prackect=1;
-    //char flag_operand=0;
-   
+  class Solution {
+public:
+    int calculate(string s) {
+ 
     
     string arr={0};
     int temp=0;
@@ -26,11 +20,9 @@ int main()
     int power_of_ten=0;
     int sign_before =1;
     int last_sign_of_prackect=1;
-  
-          for(int i=0; i<s.size();i++)
+  for(int i=0; i<s.size();i++)
        {
-          
-            if(s[i]=='+')
+       if(s[i]=='+')
              {
                 register_of_final_result+=sign_before*operand; 
                 sign_before=1;
@@ -65,8 +57,8 @@ int main()
             
     else if(s[i]==')')
          {
-             register_of_final_result+=sign_before*operand;
-            register_of_final_result+=last_sign_of_prackect* temp ;
+             register_of_final_result+=last_sign_of_prackect*sign_before*operand;
+            register_of_final_result+= temp ;
             temp=0;     
             operand=0;power_of_ten=0;
             last_sign_of_prackect=1;      
@@ -76,10 +68,14 @@ int main()
            {
              register_of_final_result+=sign_before*operand;
             }
-  }
-return register_of_final_result;;
+    }
+  
+return register_of_final_result;
 
 
+    
+}
+};
 
 cout<<register_of_final_result;;
 
